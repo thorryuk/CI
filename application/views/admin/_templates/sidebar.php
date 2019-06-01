@@ -26,12 +26,36 @@
             <span>Admin List</span></a>
     </li>
 
-    <!-- Nav Item - Worker -->
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin_controller/temperature'); ?>">
+            <i class="fas fa-fw fa-temperature-high"></i>
+            <span>Temperature</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin_controller/voltage'); ?>">
+            <i class="fas fa-fw fa-bolt"></i>
+            <span>Voltage</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin_controller/vibrate'); ?>">
+            <i class="fas fa-fw fa-square"></i>
+            <span>Vibrate</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin_controller/cctv'); ?>">
+            <i class="fas fa-fw fa-video"></i>
+            <span>CCTV</span></a>
+    </li>
+
+    <!-- Nav Item - Worker -->
+    <!-- <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin_controller/get_w'); ?>">
             <i class="fas fa-fw fa-list"></i>
             <span>Worker List</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

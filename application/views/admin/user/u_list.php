@@ -9,9 +9,6 @@
                 <td>
                     <a class="btn btn-primary btn-block" href="<?= base_url('admin_controller/add_u'); ?>" role="button">Tambah Data</a>
                 </td>
-                <td>
-                    <a class="btn btn-primary btn-block" href="<?= base_url('admin_controller/pdf_u'); ?>" role="button">Tampilkan PDF</a>
-                </td>
             </tr>
         </div>
     </div>

@@ -74,51 +74,51 @@ class Admin_controller extends CI_Controller
         $this->load->view('admin/_templates/footer');
     }
 
-    //edit data by id to table worker
-    public function edit_w($id)
-    {
-        if (!isset($id)) redirect('admin/index');
+    // //edit data by id to table worker
+    // public function edit_w($id)
+    // {
+    //     if (!isset($id)) redirect('admin/index');
 
-        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    //     $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $worker = $this->worker_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($worker->rules());
+    //     $worker = $this->worker_model;
+    //     $validation = $this->form_validation;
+    //     $validation->set_rules($worker->rules());
 
-        if ($validation->run()) {
-            $worker->update();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Data Berhasil Di Rubah ! <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button></div>');
-            redirect('admin_controller/get_w');
-        }
+    //     if ($validation->run()) {
+    //         $worker->update();
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Data Berhasil Di Rubah ! <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //         <span aria-hidden="true">&times;</span></button></div>');
+    //         redirect('admin_controller/get_w');
+    //     }
 
-        $data["worker"] = $worker->getById($id);
-        if (!$data["worker"]) show_404();
-        $this->load->view('admin/_templates/header');
-        $this->load->view('admin/_templates/sidebar');
-        $this->load->view('admin/_templates/topbar', $nama);
-        $this->load->view('admin/worker/w_edit', $data);
-        $this->load->view('admin/_templates/footer');
-    }
+    //     $data["worker"] = $worker->getById($id);
+    //     if (!$data["worker"]) show_404();
+    //     $this->load->view('admin/_templates/header');
+    //     $this->load->view('admin/_templates/sidebar');
+    //     $this->load->view('admin/_templates/topbar', $nama);
+    //     $this->load->view('admin/worker/w_edit', $data);
+    //     $this->load->view('admin/_templates/footer');
+    // }
 
-    //delete data by id from table worker
-    public function delete_w($id)
-    {
-        if (!isset($id)) show_404();
+    // //delete data by id from table worker
+    // public function delete_w($id)
+    // {
+    //     if (!isset($id)) show_404();
 
-        if ($this->worker_model->delete($id)) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Data Berhasil Di Hapus ! <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button></div>');
-            redirect(site_url('admin_controller/get_w'));
-        }
-    }
+    //     if ($this->worker_model->delete($id)) {
+    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Data Berhasil Di Hapus ! <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //         <span aria-hidden="true">&times;</span></button></div>');
+    //         redirect(site_url('admin_controller/get_w'));
+    //     }
+    // }
 
-    //menampilkan PDF Worker
-    public function pdf()
-    {
-        $data["worker"] = $this->worker_model->getAll();
-        $this->load->view('admin/worker/w_pdf', $data);
-    }
+    // //menampilkan PDF Worker
+    // public function pdf()
+    // {
+    //     $data["worker"] = $this->worker_model->getAll();
+    //     $this->load->view('admin/worker/w_pdf', $data);
+    // }
 
     //end worker controller
 
@@ -218,11 +218,56 @@ class Admin_controller extends CI_Controller
     }
 
     //menampilkan PDF Worker
-    public function pdf_u()
-    {
-        $data["user"] = $this->user_model->getAll();
-        $this->load->view('admin/user/u_pdf', $data);
-    }
+    // public function pdf_u()
+    // {
+    //     $data["user"] = $this->user_model->getAll();
+    //     $this->load->view('admin/user/u_pdf', $data);
+    // }
 
     //end worker controller
+
+
+    //start module controller
+
+    public function temperature()
+    {
+        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/_templates/header');
+        $this->load->view('admin/_templates/sidebar');
+        $this->load->view('admin/_templates/topbar', $nama);
+        $this->load->view('admin/module/temperature');
+        $this->load->view('admin/_templates/footer');
+    }
+
+    public function voltage()
+    {
+        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/_templates/header');
+        $this->load->view('admin/_templates/sidebar');
+        $this->load->view('admin/_templates/topbar', $nama);
+        $this->load->view('admin/module/voltage');
+        $this->load->view('admin/_templates/footer');
+    }
+
+    public function vibrate()
+    {
+        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/_templates/header');
+        $this->load->view('admin/_templates/sidebar');
+        $this->load->view('admin/_templates/topbar', $nama);
+        $this->load->view('admin/module/vibrate');
+        $this->load->view('admin/_templates/footer');
+    }
+
+    public function cctv()
+    {
+        $nama['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/_templates/header');
+        $this->load->view('admin/_templates/sidebar');
+        $this->load->view('admin/_templates/topbar', $nama);
+        $this->load->view('admin/module/cctv');
+        $this->load->view('admin/_templates/footer');
+    }
+
+    //end module controller
 }
